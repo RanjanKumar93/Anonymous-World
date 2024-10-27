@@ -1,8 +1,10 @@
+import 'package:anonymous_world/screen/chat.dart';
 import 'package:anonymous_world/state/auth/auth_bloc.dart';
 import 'package:anonymous_world/state/home/home_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -103,10 +105,19 @@ class HomeScreenState extends State<HomeScreen> {
                     itemCount: filteredUsers.length,
                     itemBuilder: (context, index) {
                       return Card(
-                        child: ListTile(
-                          title: Text(filteredUsers[index]), // Display UID
-                        ),
-                      );
+                          child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChatScreen(
+                                      uid1: currentUserUid!,
+                                      uid2: filteredUsers[index],
+                                    )),
+                          );
+                        },
+                        title: Text(filteredUsers[index]), // Display UID
+                      ));
                     },
                   ),
                 ),

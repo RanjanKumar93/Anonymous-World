@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,21 +50,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAGYMRVN2B2UgjI_uLJgMt02BpUFZassr4',
-    appId: '1:452223874428:android:db9eb4662c9531f37660f9',
-    messagingSenderId: '452223874428',
-    projectId: 'anonymous-world-980b2',
-    storageBucket: 'anonymous-world-980b2.appspot.com',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['ANDROID_API_KEY'] ?? "",
+    appId: dotenv.env['ANDROID_APP_ID'] ?? "",
+    messagingSenderId: dotenv.env['ANDROID_MESSAGING_SENDER_ID'] ?? "",
+    projectId: dotenv.env['ANDROID_PROJECT_ID'] ?? "",
+    storageBucket: dotenv.env['ANDROID_STORAGE_BUCKET'] ?? "",
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCIC4DWnULnhATPtTtM7LCtDoo0u6MUm60',
-    appId: '1:452223874428:ios:42f0fc566cbadbb87660f9',
-    messagingSenderId: '452223874428',
-    projectId: 'anonymous-world-980b2',
-    storageBucket: 'anonymous-world-980b2.appspot.com',
-    iosBundleId: 'com.example.anonymousWorld',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['IOS_API_KEY'] ?? "",
+    appId: dotenv.env['IOS_APP_ID'] ?? "",
+    messagingSenderId: dotenv.env['IOS_MESSAGING_SENDER_ID'] ?? "",
+    projectId: dotenv.env['IOS_PROJECT_ID'] ?? "",
+    storageBucket: dotenv.env['IOS_STORAGE_BUCKET'] ?? "",
+    iosBundleId: dotenv.env['IOS_BUNDLE_ID'] ?? "",
   );
-
 }

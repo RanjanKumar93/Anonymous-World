@@ -1,4 +1,5 @@
 import 'package:anonymous_world/models/router_state.dart';
+// import 'package:anonymous_world/screen/chat.dart';
 import 'package:anonymous_world/screen/home.dart';
 import 'package:anonymous_world/screen/login.dart';
 import 'package:anonymous_world/screen/splash.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+// final _shellNavigatorKey = GlobalKey<NavigatorState>();
+// final drawerKey = GlobalKey<ScaffoldState>();
 
 RouterState routerState = RouterState();
 
@@ -36,6 +40,7 @@ GoRouter routerConfig = GoRouter(
   refreshListenable: routerState,
   redirect: (context, state) {
     if (routerState.redir != null) {
+      // print("routerState.redir ad asdf sfd f df d fd f df df da");
       return routerState.redir;
     }
 
@@ -53,6 +58,7 @@ GoRouter routerConfig = GoRouter(
       return null;
     } else if (authState is AuthStateAuthenticated) {
       if (state.fullPath != "/") {
+        // print("authState is AuthStateAuthenticated routerdf df da");
         return "/";
       }
       return null;
